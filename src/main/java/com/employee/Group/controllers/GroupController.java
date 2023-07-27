@@ -44,7 +44,6 @@ public class GroupController {
     public ResponseEntity<String> joinToGroup(@RequestBody GroupDTO groupDTO){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String authenticatedUsername = authentication.getName();
-        //TODO: MAKE DATA CHECK
         this.groupService.joinUserToGroup(groupDTO, authenticatedUsername);
         return new ResponseEntity<>("Joined to group", HttpStatus.OK);
     }
@@ -54,8 +53,7 @@ public class GroupController {
     public ResponseEntity<String> leaveFromGroup(@PathVariable Long id){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String authenticatedUsername = authentication.getName();
-        //TODO: MAKE DATA CHECK
-
+        this.groupService.leaveUserFromGroup(id, authenticatedUsername);
         return new ResponseEntity<>("Joined to group", HttpStatus.OK);
     }
 }
